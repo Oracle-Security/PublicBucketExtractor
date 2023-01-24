@@ -31,7 +31,7 @@ def extractFile(file_path):
         return
 
     # Download file
-    urllib.request.urlretrieve(file_path, 'temp.txt')
+    urllib.request.urlretrieve(file_path, filename)
 
     # Search for keywords
     keywords = ['password', 'credit', 'key', 'social', 'ssn', 'transaction','secret']
@@ -48,7 +48,7 @@ def extractFile(file_path):
             if match:
                 break
     if not match:
-        os.remove('temp.txt')
+        os.remove(filename)
 
 # Create thread pool with a fixed number of threads
 with ThreadPoolExecutor(max_workers=10) as executor:
