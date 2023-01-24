@@ -18,7 +18,7 @@ print("file_paths.txt contains all the file paths, enjoy the data!")
 
 keywords = ["db_", "config"]
 urlextensions = "php"
-excludekeywords = ""
+excludekeywords = "-test" #Make sure you have a minus, if you don't want anything, just do !
 extensions = ["xls"]
 access_token = "" #Input your access token.
 doKeyword = False
@@ -38,7 +38,7 @@ if doKeyword:
         for i in range(1, num_pages + 1):
             endpoint = f"https://buckets.grayhatwarfare.com/api/v1/files/{keyword}{excludekeywords}/{i*1000}/1000?extensions={urlextensions}&access_token={access_token}"
             response = requests.get(endpoint, verify=True)
-            print(response.request.url)
+            #print(response.request.url)
             data = response.json()
             #print(data)
             for file in data["files"]:
@@ -58,7 +58,8 @@ if doExtension:
     for extension in extensions:
         print("[+] Extracting Extensions now.")
         endpoint = f"https://buckets.grayhatwarfare.com/api/v1/files/{excludekeywords}/0/1000?extensions={extension}&access_token={access_token}"
-        response = requests.get(endpoint)
+        response = requests.get(endpoint, verify=True)
+        #print(response.request.url)
         data = response.json()
         num_results = data["results"]
         print(f"[+] Extracting " + str(num_results) + f" Of Entries for [{extension}].")
