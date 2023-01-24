@@ -34,7 +34,7 @@ def extractFile(file_path):
     urllib.request.urlretrieve(file_path, 'temp.txt')
 
     # Search for keywords
-    keywords = ['error', 'warning']
+    keywords = ['password', 'credit', 'key', 'social', 'ssn', 'transaction']
     match = False
     with open('temp.txt', 'r') as f:
         for line in f:
